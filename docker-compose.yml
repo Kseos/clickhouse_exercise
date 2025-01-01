@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse_server
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+
+    ports:
+      - "8123:8123"  # HTTP интерфейс
+      - "9000:9000"  # Native интерфейс
+    environment:
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=your_password
+      - CLICKHOUSE_DB=default
+volumes:
+  clickhouse_data:
